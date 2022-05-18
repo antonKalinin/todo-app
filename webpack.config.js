@@ -1,47 +1,48 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const webpack = require('webpack');
 
 module.exports = {
-    mode: 'development',
-    entry: './src/index.js',
+    entry: ['@babel/polyfill', '/src/assets/index.js'],
     output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js'
+        filename: 'bundle.js',
+        path: path.resolve(__dirname, 'dist')
     },
-    module: {
-        rules: [
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                use: ['babel-loader']
-            },
-            {
-                test: /\.(?:ico|gif|png|jpg|jpeg)?/i,
-                type: 'asset/resource'
-            },
-            {
-                test: /\.(scss|css)$/,
-                use: ['style-loader', 'css-loader', 'sass-loader', 'postcss-loader']
-            }
-        ]
+    resolve: {
+        extensions: ['.js', '.css', '.html'],
+        alias: {
+            '@': path.resolve(__dirname, 'src')
+        }
     },
+    devtool: 'source-map',
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'todo-app',
-            template: path.resolve(__dirname, '/src/template.html'),
+            title: 'auth-app',
+            template: path.resolve(__dirname, '/src/assets/template.html'),
             filename: 'index.html'
         }),
         new CleanWebpackPlugin(),
-        new webpack.HotModuleReplacementPlugin(),
+        new MiniCssExtractPlugin({
+            filename: 'styles.css'
+        }),
+
     ],
-    devServer: {
-        historyApiFallback: true,
-        contentBase: path.resolve(__dirname, './dist'),
-        open: true,
-        compress: true,
-        hot: true,
-        port: 8080,
+    module: {
+        rules: [{
+                test: /\.css$/,
+                use: [MiniCssExtractPlugin.loader, 'css-loader']
+            },
+            {
+                test: /\.?js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: "babel-loader",
+                    options: {
+                        presets: ['@babel/preset-env', '@babel/preset-react'],
+                        plugins: ['@babel/plugin-proposal-class-properties']
+                    },
+                }
+            }
+        ]
     }
 }
