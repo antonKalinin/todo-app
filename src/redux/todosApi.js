@@ -6,15 +6,15 @@ export const todosApi = createApi({
     baseQuery: fetchBaseQuery({baseUrl: 'http://localhost:3001/'}),
     endpoints: build => ({
         getTodos: build.query({
-            query: () => `todos`
+            query: () => `todos`,
+            providesTags: (result) => 
+            result
+              ? [
+                  ...result.map(({ id }) => ({ type: 'Task', id })),
+                  { type: 'Task', id: 'LIST' },
+                ]
+              : [{ type: 'Task', id: 'LIST' }]
         }),
-        providesTags: (result) =>
-        result
-          ? [
-              ...result.map(({ id }) => ({ type: 'Task', id })),
-              { type: 'Task', id: 'LIST' },
-            ]
-          : [{ type: 'Task', id: 'LIST' }],
         addTodos: build.mutation({
             query: body => ({
                 url: 'todos',

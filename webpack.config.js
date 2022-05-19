@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
     entry: ['@babel/polyfill', '/src/assets/index.js'],
@@ -13,6 +14,9 @@ module.exports = {
         alias: {
             '@': path.resolve(__dirname, 'src')
         }
+    },
+    devServer: {
+        port: 3000
     },
     devtool: 'source-map',
     plugins: [
