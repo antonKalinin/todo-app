@@ -30,7 +30,7 @@ export const todosApi = createApi({
             }),
             invalidatesTags: [{type: 'Task', id: 'LIST'}]
         }),
-        updateTodosDone: build.mutation({
+        updateTodos: build.mutation({
             query(data) {
                 const {id, ...body} = data;
                 return {
@@ -48,5 +48,5 @@ export const {
     useGetTodosQuery,
     useAddTodosMutation,
     useDeleteTodosMutation,
-    useUpdateTodosDoneMutation
+    useUpdateTodosMutation
 } = todosApi;

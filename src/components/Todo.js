@@ -1,35 +1,51 @@
 import React from "react";
 import { 
-    useUpdateTodosDoneMutation,
+    useUpdateTodosMutation,
     useDeleteTodosMutation
  } from "../redux/todosApi";
+ import { task } from '../helper/taskObj';
 
 export const Todo = ({text, id, done}) => {
-    const [updateTodosDone] = useUpdateTodosDoneMutation();
+    const [updateTodos] = useUpdateTodosMutation();
     const [deleteTodos] = useDeleteTodosMutation();
+    // const [updateText, setUpdateText] = useState('');
 
-    const handleUpdateTodosDone = async (id) => {
-        const updateTask = {
-            id: id,
-            text,
-            done: !done
-        };
-        await updateTodosDone(updateTask)
+    const handleUpdateTodos = async (id, e) => {
+        const updateTask = task(text, e.target.checked, id);
+        await updateTodos(updateTask);
     };
 
     const handleDeleteTodos = async (id) => {
-        await deleteTodos(id)
+        await deleteTodos(id);
     };
 
     return (
-        <>
-            <li>
-                <div>
-                    <input type="checkbox" id={id} name="todo" onChange={() => handleUpdateTodosDone(id)}/>
-                    <label htmlFor={id}>{text}</label>
-                    <button onClick={() => handleDeleteTodos(id)}>Delete</button>
-                </div>
-            </li>
-        </>
+        <div className="task">
+					<div className="content">
+                        {/* <input 
+                            className="form-check-input me-1" 
+                            checked={done} 
+                            type="checkbox" 
+                            name="todo" 
+                            onChange={(e) => handleUpdateTodos(id, e)}/> */}
+						<input 
+							type="text" 
+							className="text" 
+							value={text}
+							readOnly
+                        />
+					</div>
+					<div className="actions">
+						{/* <button 
+                            className="edit"
+                        >Edit
+                        </button> */}
+						<button 
+                            className="delete"
+                            onClick={() => handleDeleteTodos(id)}
+                        >Delete
+                        </button>
+					</div>
+        </div>
     )
 }
