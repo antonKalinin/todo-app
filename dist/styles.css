@@ -1,0 +1,188 @@
+/*!*************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/assets/styles.css ***!
+  \*************************************************************************/
+:root {
+	--todo: #F3FBFB;
+	--darker: #1F2937;
+	--darkest: #111827;
+	--words: #272343;
+	--done: #716f7e;
+	--orange: #ffb803;
+	--yellow: #FFD803;
+	--light: #EEE;
+}
+
+* {
+	margin: 0;
+	box-sizing: border-box;
+	font-family: "Fira sans", sans-serif;
+	color: var(--words);
+}
+
+body {
+	display: flex;
+	background-color: var(--todo);
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+header {
+	padding: 2rem 1rem;
+	max-width: 800px;
+	width: 100%;
+	margin: 0 auto;
+}
+
+header h1{ 
+	font-size: 2.5rem;
+	font-weight: 300;
+	margin-bottom: 1rem;
+}
+
+#new-task-form {
+	display: flex;
+}
+
+input, button {
+	border: none;
+	outline: none;
+	background: none;
+}
+
+#new-task-input {
+	flex: 1 1 0%;
+	background-color: #FFD803;
+	padding: 1rem;
+	border-radius: 1rem;
+	margin-right: 1rem;
+	color: var(--words);
+	font-size: 1.25rem;
+}
+
+#new-task-input::placeholder {
+	color: var(--grey);
+	opacity: 0.3;
+}
+
+#new-task-submit {
+	color: var(--pink);
+	font-size: 1.25rem;
+	font-weight: 700;
+	background-image: linear-gradient(to right, var(--orange), var(--yellow));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	cursor: pointer;
+	transition: 0.4s;
+}
+
+#new-task-submit:hover {
+	opacity: 0.8;
+}
+
+#new-task-submit:active {
+	opacity: 0.6;
+}
+
+main {
+	flex: 1 1 0%;
+	max-width: 800px;
+	width: 100%;
+	margin: 0 auto;
+}
+
+.task-list {
+	padding: 1rem;
+}
+
+.task-list h2 {
+	font-size: 1.5rem;
+	font-weight: 300;
+	margin-bottom: 1rem;
+}
+
+#tasks .task {
+	display: flex;
+	justify-content: space-between;
+	padding: 1.5rem;
+	border-bottom: 1px solid #000;
+}
+
+.task:last-child {
+	border: none !important;
+}
+
+.task .content {
+	display: flex;
+	align-items: center;
+	flex: 1 1 0%;
+}
+
+.task .content .form-check-input {
+	width: 25px;
+	height: 25px;
+}
+
+.task .content .text {
+	margin-left: 5%;
+	font-size: 1.125rem;
+	width: 100%;
+	display: block;
+	transition: 0.4s;
+}
+
+
+.task .actions {
+	display: flex;
+	margin: 0 -0.5rem;
+}
+
+.task .actions button {
+	cursor: pointer;
+	margin: 0 0.5rem;
+	font-size: 1.125rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	transition: 0.4s;
+}
+
+.task .actions button:hover {
+	opacity: 0.8;
+}
+
+.task .actions button:active {
+	opacity: 0.6;
+}
+
+.task .actions .edit {
+	background-image: linear-gradient(to right, var(--pink), var(--purple));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.task .actions .delete {
+	color: crimson;
+}
+
+.menu {
+    display: flex;
+    font-size: 1.5em;
+    padding: 0 2.85em;
+	height: 3em;
+	align-items: center;
+}
+
+.menu__item {
+    text-decoration: none;
+    flex-grow: 1;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    padding: 0.55em 0 0.85em; 
+	transition: font-size 0.5s;
+}
+
+.menu__item:hover {
+	font-size: 1.6em;
+}
+
+/*# sourceMappingURL=styles.css.map*/

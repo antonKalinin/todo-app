@@ -7,7 +7,9 @@
     "dev": "concurrently \"npm run server\" \"npm run start\"",
     "build": "webpack --mode development",
     "start": "webpack-dev-server --mode development --open",
-    "server": "json-server --watch ./src/db.json -p 3001"
+    "server": "json-server --watch ./src/db.json -p 3001",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
@@ -23,6 +25,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
     "@reduxjs/toolkit": "^1.8.1",
+    "gh-pages": "^4.0.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-redux": "^8.0.1",
