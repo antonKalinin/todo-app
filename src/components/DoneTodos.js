@@ -1,14 +1,14 @@
 import React from "react";
-import {useGetTodosQuery} from '../redux/todosApi';
+import {useGetDoneTodosQuery} from '../redux/todosApi';
 import { Todo } from "./Todo";
 
-export const Todos = () => {
-    const {data = []} = useGetTodosQuery();
+export const DoneTodos = () => {
+    const {data = []} = useGetDoneTodosQuery();
 
     return (
         <div id="tasks">
         {
-            data.length == 0 && <h2>Nothing to do...</h2>
+            data.length == 0 && <h2>No done tasks...</h2>
         }
         {
             data.map(item => {

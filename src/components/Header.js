@@ -11,6 +11,7 @@ export const Header = () => {
         e.preventDefault();
         const newTask = task(text, false);
         await addTodos(newTask).unwrap();
+        setText('')
     };
 
     return (

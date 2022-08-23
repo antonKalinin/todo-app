@@ -22,12 +22,12 @@ export const Todo = ({text, id, done}) => {
     return (
         <div className="task">
 					<div className="content">
-                        {/* <input 
-                            className="form-check-input me-1" 
+                        <input 
+                            className="form-check-input" 
                             checked={done} 
                             type="checkbox" 
                             name="todo" 
-                            onChange={(e) => handleUpdateTodos(id, e)}/> */}
+                            onChange={(e) => handleUpdateTodos(id, e)}/>
 						<input 
 							type="text" 
 							className="text" 

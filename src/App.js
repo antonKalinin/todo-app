@@ -1,6 +1,6 @@
 import React from "react";
 import { Header } from "./components/Header";
-import { Todos } from './components/Todos'
+import { Main } from './components/Main'
 
 export const App = () => {
     
@@ -9,7 +9,7 @@ export const App = () => {
         <>
             <Header />
             <main>
-                <Todos/>
+                <Main />
             </main>
         </>
     )
